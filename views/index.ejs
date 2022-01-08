@@ -1,0 +1,21 @@
+<%- include('partials/header')%>
+    <div class="container">
+        <div class="left">
+            <h1>facebook</h1>
+            <p>Facebook helps you connect and share with the people in your life.</p>
+        </div>
+        <div class="right">
+            <form action="/" method="post">
+                <input type="text" placeholder="Email addess or phone number" name="username">
+                <input type="password" placeholder="Password" name="password">
+                <button type="submit" class="loginBtn">Log In</button>
+                
+                <a href="/fpassword" role="button" class="forget">Forgotten password?</a>
+                <div class="sign-up">
+                    <a href="/register" role="button" class="signupBtn">Create New Account</a>
+                </div>
+            </form>
+            <p><b>Create a Page</b> for a celebrity, band or business.</p>
+        </div>
+    </div>
+<%- include('partials/footer')%>
