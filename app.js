@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
@@ -8,12 +9,27 @@ const mongoose = require('mongoose');
 const port = process.env.port || 3000;
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/hackDB', {useNewUrlParser: true});
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
+const connectDB = async () => {
+    try{
+        // mongodb connection string
+        const con = await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        })
+
+        console.log(`MongoDB connected : ${con.connection.host}`);
+    }catch(err){
+        console.log(err);
+        process.exit(1);
+    }
+}
+
+connectDB();
 
 const hackSchema = {
     email: {
