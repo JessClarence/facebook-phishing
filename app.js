@@ -4,9 +4,6 @@ const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-
-
-const port = process.env.port || 3000;
 const app = express();
 
 
@@ -66,6 +63,12 @@ app.post('/', (req,res)=>{
     });
 });
 
-app.listen(port, ()=>{
-    console.log('app is connected');
-});
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+ 
+app.listen(port, function() {
+  console.log("Server started succesfully");
+});  
